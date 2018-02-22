@@ -1,0 +1,157 @@
+:root {
+  --black: #282c35;
+  --darkGrey: #4c5466;
+  --grey: ghostwhite;
+}
+
+html {
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  -webkit-font-smoothing: antialiased;
+  font-weight: 400;
+  font-size: 10px;
+  color: var(--black);
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: normal;
+}
+
+.container {
+  max-width: 1012px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.application-header {
+  background-color: var(--black);
+  padding: 2rem 0;
+  color: white;
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header-title {
+  margin: 0;
+  font-size: 2.4rem;
+  font-weight: normal;
+}
+
+.application-main {
+  font-size: 1.4rem;
+}
+
+.loader {
+  text-align: center;
+  padding: 3rem 0;
+}
+
+.loader svg path,
+.loader svg rect {
+  fill: var(--black);
+}
+
+.packages,
+.options {
+  display: flex;
+  margin: 0 -1rem;
+}
+
+.options button,
+.package {
+  margin: 0 1rem 1rem;
+}
+
+.packages {
+  justify-content: space-between;
+  align-items: stretch;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+}
+
+.package {
+  flex-basis: 100%;
+  background: var(--grey);
+}
+
+@media (min-width: 768px) {
+  .packages {
+    flex-wrap: nowrap;
+  }
+}
+
+.package-header {
+  padding: 1rem;
+  background-color: var(--black);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+}
+
+.package-header h2 {
+  margin: 0;
+}
+
+.package-body {
+  padding: 1rem;
+  text-align: center;
+  border: 1px solid var(--darkGrey);
+}
+
+.package-body > p {
+  margin: 0 0 1rem;
+}
+
+.update-instructions ul {
+  padding: 0 2rem 1rem;
+}
+
+.body-code {
+  background: var(--grey);
+  padding: 1px 3px 2px;
+  border-radius: 5px;
+}
+
+.local-outdated,
+.package-outdated .package-status {
+  color: #e90000;
+  font-weight: bold;
+}
+
+button {
+  padding: 1rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  color: var(--grey);
+  background: var(--darkGrey);
+  border: 1px solid var(--darkGrey);
+}
+
+button:hover,
+button:focus,
+button:active {
+  color: var(--darkGrey);
+  background: var(--grey);
+  border: 1px solid var(--darkGrey);
+}
