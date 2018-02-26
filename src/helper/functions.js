@@ -1,7 +1,9 @@
 import packageJson from './../../package.json';
 
 export const fetchGithubVersion = url => {
-  return fetch(url + '?access_token=1a6552c7956b89f88cf4d5861812ec6b533182ba')
+  // console.log(process.env.NODE_ENV);
+  // console.log(process.env.REACT_APP_STAGE);
+  return fetch(url + '?access_token=' + process.env.REACT_APP_GITHUB_PERSONAL_ACCESS_TOKEN)
     .then(response => response.json())
     .then(versionData => atob(versionData.content).trim());
 };
