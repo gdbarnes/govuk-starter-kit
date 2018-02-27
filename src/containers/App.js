@@ -22,7 +22,7 @@ class App extends Component {
 
   componentWillMount = () => {
     Promise.resolve(this.props.data).then(value => {
-      console.log(value);
+      // console.log(value);
       this.setState({
         loading: false,
         versionData: value
