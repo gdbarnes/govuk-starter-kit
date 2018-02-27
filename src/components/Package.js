@@ -1,8 +1,7 @@
 import React from 'react';
 
 const Package = props => {
-  // const isCurrent = props.versions.githubVerison === props.versions.localVerison;
-  const isCurrent = false;
+  const isCurrent = props.versions.localVersion === props.versions.githubVersion;
   return (
     <li className={isCurrent ? 'package' : 'package package-outdated'}>
       <header className="package-header">

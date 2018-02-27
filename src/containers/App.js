@@ -10,7 +10,6 @@ import { Markup } from './../components/Markup';
 class App extends Component {
   state = {
     loading: true,
-    versionData: {},
     location: window.location.origin,
     serverLocation: '',
     markupOptions: {
@@ -105,12 +104,12 @@ class App extends Component {
         <main className="application-main container">
           <Intro />
           <div>
-            {this.state.loading ? (
+            {this.state && this.state.versionData ? (
+              <Packages howToUpdate={this.howToUpdate} packageInfo={this.state.versionData} />
+            ) : (
               <div className="loader">
                 <img src={loader} alt="loader" />
               </div>
-            ) : (
-              <Packages howToUpdate={this.howToUpdate} packageInfo={this.state.versionData} />
             )}
           </div>
           {this.state.showUpdateInstructions ? <UpdateInstructions /> : null}
