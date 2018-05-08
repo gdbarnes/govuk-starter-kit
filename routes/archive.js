@@ -2,12 +2,15 @@ const fs = require('fs');
 const archiver = require('archiver');
 const path = require('path');
 
-const bytesToSize = bytes => {
-  const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
-  if (bytes === 0) return 'n/a';
-  const i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)), 10);
-  if (i === 0) return `${bytes}${sizes[i]})`;
-  return `${(bytes / 1024 * i).toFixed()}${sizes[i]}`;
+const bytesToSize = (bytes, decimalPlaces) => {
+  if (0 === bytes) return '0 Bytes';
+  const divisor = 1024,
+    decimals = decimalPlaces || 2,
+    unit = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'],
+    unitChooser = Math.floor(Math.log(bytes) / Math.log(divisor));
+  return (
+    parseFloat((bytes / Math.pow(divisor, unitChooser)).toFixed(decimals)) + ' ' + unit[unitChooser]
+  );
 };
 
 const downloadFilePath = path.join(__dirname, '..', 'build', 'downloads');
@@ -23,7 +26,7 @@ exports.zip = (req, res) => {
   const output = fs.createWriteStream(path.join(downloadFilePath, fileName));
 
   output.on('close', function() {
-    console.log('...zip created (' + bytesToSize(archive.pointer()) + ')\n');
+    console.log('...zip created ✅ (' + bytesToSize(archive.pointer()) + ')\n');
   });
 
   output.on('end', function() {

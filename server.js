@@ -21,7 +21,7 @@ app.get('/archive', archive.zip);
 app.get('/download', archive.download);
 
 app.set('port', process.env.PORT || 8080);
-// app.get('/port', (req, res) => res.send(`${app.get('port')}`));
+app.get('/port', (req, res) => res.send(`${app.get('port')}`));
 
 // const port = process.env.PORT || 8080;
 app.listen(app.get('port'), () => console.log(`Server listening on port ${app.get('port')}`));

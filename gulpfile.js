@@ -1,6 +1,7 @@
 'use strict';
 
 const gulp = require('gulp');
+const clean = require('gulp-clean');
 const sass = require('gulp-sass');
 const cleanCSS = require('gulp-clean-css');
 const size = require('gulp-size');

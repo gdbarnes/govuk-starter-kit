@@ -177,3 +177,10 @@ button:active {
   background: var(--grey);
   border: 1px solid var(--darkGrey);
 }
+
+button:disabled {
+  background: var(--grey);
+  color: #b9bcc0;
+  border: 1px solid var(--grey);
+  pointer-events: none;
+}
