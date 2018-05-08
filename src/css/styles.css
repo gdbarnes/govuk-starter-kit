@@ -1,6 +1,7 @@
 :root {
   --black: #282c35;
   --darkGrey: #4c5466;
+  --errorRed: #e80000;
   --grey: ghostwhite;
 }
 
@@ -75,12 +76,13 @@ h4 {
 .packages,
 .options {
   display: flex;
-  margin: 0 -1rem;
+  margin: 1rem -1rem;
 }
 
 .options button,
 .package {
-  margin: 0 1rem 1rem;
+  margin: 0 1rem;
+  border: 1px solid var(--darkGrey);
 }
 
 .packages {
@@ -96,36 +98,51 @@ h4 {
   background: var(--grey);
 }
 
-@media (min-width: 768px) {
-  .packages {
-    flex-wrap: nowrap;
-  }
-}
-
 .package-header {
-  padding: 1rem;
+  padding: 1rem 1rem 1.5rem;
   background-color: var(--black);
   color: white;
-  display: flex;
-  justify-content: space-between;
+  text-align: center;
 }
 
 .package-header h2 {
-  margin: 0;
+  margin: 0 0 0.5rem;
 }
 
 .package-body {
   padding: 1rem;
   text-align: center;
-  border: 1px solid var(--darkGrey);
+}
+
+@media (min-width: 768px) {
+  .packages {
+    flex-wrap: nowrap;
+  }
+
+  .package-header,
+  .package-body {
+    text-align: left;
+  }
 }
 
 .package-body > p {
   margin: 0 0 1rem;
 }
 
+.update-instructions {
+  border: 1px solid var(--darkGrey);
+  padding: 1rem;
+  background: var(--grey);
+}
+
+.update-instructions h3 {
+  margin: 0 0 1rem;
+}
+
 .update-instructions ul {
-  padding: 0 2rem 1rem;
+  margin: 0;
+  padding: 0 0 0 2rem;
+  list-style-type: decimal;
 }
 
 .body-code {
@@ -134,10 +151,13 @@ h4 {
   border-radius: 5px;
 }
 
-.local-outdated,
-.package-outdated .package-status {
-  color: #e90000;
-  font-weight: bold;
+.package-status {
+  margin: 0;
+}
+
+.local-outdated {
+  color: var(--errorRed);
+  font-weight: 700;
 }
 
 button {

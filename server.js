@@ -15,11 +15,13 @@ app.use(
 );
 
 app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'build', 'index.html')));
-app.get('/ping', (req, res) => res.send('pong'));
-app.get('/port', (req, res) => res.send(`${port}`));
+// app.get('/ping', (req, res) => res.send('pong'));
 app.get('/gulp', gulpTasks.gulp);
 app.get('/archive', archive.zip);
 app.get('/download', archive.download);
 
-const port = process.env.PORT || 8080;
-app.listen(port, () => console.log(`Server listening on port ${port}`));
+app.set('port', process.env.PORT || 8080);
+// app.get('/port', (req, res) => res.send(`${app.get('port')}`));
+
+// const port = process.env.PORT || 8080;
+app.listen(app.get('port'), () => console.log(`Server listening on port ${app.get('port')}`));

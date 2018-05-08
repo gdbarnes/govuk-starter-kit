@@ -6,12 +6,15 @@ const Package = props => {
     <li className={isCurrent ? 'package' : 'package package-outdated'}>
       <header className="package-header">
         <h2>{props.packageTitle}</h2>
-        <span className="package-status">{isCurrent ? 'Up to date ✅' : 'Outdated❗️'}</span>
+        <p className="package-status">
+          {isCurrent ? 'Up to date - ✅' : 'Package is out of date -❗️'}
+        </p>
       </header>
       <main className="package-body">
         <p>Github version: {props.versions.githubVersion}</p>
-        <p className={isCurrent ? '' : 'local-outdated'}>
-          Local version: {props.versions.localVersion}{' '}
+        <p>
+          Local version:{' '}
+          <span className={isCurrent ? '' : 'local-outdated'}>{props.versions.localVersion}</span>
         </p>
         {isCurrent ? (
           ''

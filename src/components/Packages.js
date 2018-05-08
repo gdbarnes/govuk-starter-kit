@@ -5,12 +5,12 @@ const Packages = props => (
   <ul className="packages">
     <Package
       howToUpdate={props.howToUpdate}
-      packageTitle="govuk template jinja"
+      packageTitle="govuk template"
       versions={props.packageInfo.template}
     />
     <Package
       howToUpdate={props.howToUpdate}
-      packageTitle="govuk elements sass"
+      packageTitle="govuk elements"
       versions={props.packageInfo.elements}
     />
     <Package

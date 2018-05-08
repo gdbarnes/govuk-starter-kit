@@ -20,7 +20,7 @@ class App extends Component {
     showDownload: false
   };
 
-  componentWillMount = () => {
+  componentDidMount() {
     Promise.resolve(this.props.data).then(value => {
       // console.log(value);
       this.setState({
@@ -39,7 +39,7 @@ class App extends Component {
           }:${serverPortNumber}`
         })
       );
-  };
+  }
 
   regenerateFiles = () => {
     console.log(
