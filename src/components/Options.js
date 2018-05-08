@@ -19,16 +19,16 @@ const Options = props => {
         <button onClick={props.regenerateFiles} value="">
           Regenerate files
         </button>
-        <button onClick={props.browseAssets} value="">
+        <button onClick={props.browseAssets} disabled={true} value="">
           Browse assets
         </button>
         {!props.showDownload ? (
           <button onClick={props.createArchive} value="">
-            Create archive
+            Create archive file (.zip)
           </button>
         ) : (
           <button onClick={props.downloadArchive} value="">
-            ⇩ Download archive ⇩
+            Download archive
           </button>
         )}
       </div>

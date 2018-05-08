@@ -16,15 +16,15 @@ const getGithubVersions = async () => {
     },
     {
       githubVersion: await fetchGithubVersion(
-        'https://api.github.com/repos/alphagov/govuk_frontend_toolkit/contents/VERSION.txt'
-      ),
-      localVersion: getPackageJsonVersion('govuk_frontend_toolkit')
-    },
-    {
-      githubVersion: await fetchGithubVersion(
         'https://api.github.com/repos/alphagov/govuk_elements/contents/packages/govuk-elements-sass/VERSION.txt'
       ),
       localVersion: getPackageJsonVersion('govuk-elements-sass')
+    },
+    {
+      githubVersion: await fetchGithubVersion(
+        'https://api.github.com/repos/alphagov/govuk_frontend_toolkit/contents/VERSION.txt'
+      ),
+      localVersion: getPackageJsonVersion('govuk_frontend_toolkit')
     }
   ];
 

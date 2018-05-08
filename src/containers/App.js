@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import loader from './../css/loader.svg';
+import { consoleStyles } from './../helper/constants';
 import { Header } from './../components/Header';
 import { Intro } from './../components/Intro';
 import { Packages } from './../components/Packages';
@@ -34,7 +35,7 @@ class App extends Component {
       .then(response => response.text())
       .then(serverPortNumber =>
         this.setState({
-          serverLocation: `${window.location.protocol}://${
+          serverLocation: `${window.location.protocol}//${
             window.location.hostname
           }:${serverPortNumber}`
         })
@@ -42,10 +43,7 @@ class App extends Component {
   }
 
   regenerateFiles = () => {
-    console.log(
-      '%c Starting Gulp tasks... 🥤',
-      'color: forestgreen; font-family: -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif; font-weight: bold;'
-    );
+    console.log('%c%s', consoleStyles, `Gulp tasks started... 🥤`);
     fetch('/gulp')
       .catch(error => console.error('Error: ', error))
       .then(response => this.successfulCompile());
@@ -53,17 +51,22 @@ class App extends Component {
 
   successfulCompile = () => {
     console.log(
-      `%c Assets compiled to: ${this.state.location}/assets/ 🎉`,
-      'color: forestgreen; font-family: -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif; font-weight: bold;'
+      '%c%s',
+      consoleStyles,
+      `...Gulp tasks complete ✅ \n\nAssets compiled to: ${this.state.serverLocation}/assets/`
     );
   };
 
   createArchive = () => {
-    console.log('creating archive');
+    console.log('%c%s', consoleStyles, `Creating zip... 🗜`);
     fetch('/archive')
       .then(response => {
         this.setState({ showDownload: true });
-        console.log(response);
+        console.log(
+          '%c%s',
+          consoleStyles,
+          `...zip created ✅ \n\nDownload from: ${this.state.serverLocation}/download`
+        );
       })
       .catch(err => console.log(err));
   };
