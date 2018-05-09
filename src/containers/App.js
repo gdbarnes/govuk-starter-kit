@@ -5,7 +5,8 @@ import { Header } from './../components/Header';
 import { Intro } from './../components/Intro';
 import { Packages } from './../components/Packages';
 import { UpdateInstructions } from './../components/UpdateInstructions';
-import { Options } from './../components/Options';
+import { AssetOptions } from './../components/AssetOptions';
+import { MarkupOptions } from './../components/MarkupOptions';
 import { Markup } from './../components/Markup';
 
 class App extends Component {
@@ -13,22 +14,23 @@ class App extends Component {
     loading: true,
     location: window.location.origin,
     serverLocation: '',
-    markupOptions: {
-      minified: true,
-      path: 'absolute'
-    },
+    minified: true,
+    path: 'absolute',
     showUpdateInstructions: false,
-    showDownload: false
+    successfulCompilation: false,
+    archiveCreated: false
   };
 
   componentDidMount() {
-    Promise.resolve(this.props.data).then(value => {
-      // console.log(value);
-      this.setState({
-        loading: false,
-        versionData: value
+    Promise.resolve(this.props.data)
+      .catch(error => console.error('Error: ', error))
+      .then(value => {
+        // console.log(value);
+        this.setState({
+          loading: false,
+          versionData: value
+        });
       });
-    });
 
     fetch('/port')
       .catch(error => console.error('Error: ', error))
@@ -40,9 +42,16 @@ class App extends Component {
           }:${serverPortNumber}`
         })
       );
+
+    const assetsHaveCompiled = localStorage.getItem('successfulCompilation');
+    const archiveWasCreated = localStorage.getItem('archiveCreated');
+    this.setState({
+      successfulCompilation: assetsHaveCompiled,
+      archiveCreated: archiveWasCreated
+    });
   }
 
-  regenerateFiles = () => {
+  generateFiles = () => {
     console.log('%c%s', consoleStyles, `Gulp tasks started... 🥤`);
     fetch('/gulp')
       .catch(error => console.error('Error: ', error))
@@ -50,10 +59,12 @@ class App extends Component {
   };
 
   successfulCompile = () => {
+    this.setState({ successfulCompilation: true });
+    localStorage.setItem('successfulCompilation', this.state.successfulCompilation);
     console.log(
       '%c%s',
       consoleStyles,
-      `...Gulp tasks complete ✅ \n\nAssets compiled to: ${this.state.serverLocation}/assets/`
+      `...Gulp tasks complete ✅ \n\nAssets compiled to: ${this.state.serverLocation}/assets`
     );
   };
 
@@ -61,7 +72,8 @@ class App extends Component {
     console.log('%c%s', consoleStyles, `Creating zip... 🗜`);
     fetch('/archive')
       .then(response => {
-        this.setState({ showDownload: true });
+        this.setState({ archiveCreated: true });
+        localStorage.setItem('archiveCreated', this.state.archiveCreated);
         console.log(
           '%c%s',
           consoleStyles,
@@ -77,9 +89,13 @@ class App extends Component {
 
   togglePath = () => {
     this.setState({
-      markupOptions: {
-        path: this.state.markupOptions.path === 'absolute' ? 'cdn' : 'absolute'
-      }
+      path: this.state.path === 'absolute' ? 'cdn' : 'absolute'
+    });
+  };
+
+  toggleMinified = () => {
+    this.setState({
+      minified: !this.state.minified
     });
   };
 
@@ -116,24 +132,36 @@ class App extends Component {
             )}
           </div>
           {this.state.showUpdateInstructions ? <UpdateInstructions /> : null}
-          <h3>Assets options</h3>
-          <Options
+
+          <AssetOptions
             type="assets"
-            regenerateFiles={this.regenerateFiles}
+            generateFiles={this.generateFiles}
             browseAssets={this.browseAssets}
             createArchive={this.createArchive}
-            showDownload={this.state.showDownload}
             downloadArchive={this.downloadArchive}
+            archiveCreated={this.state.archiveCreated}
+            successfulCompilation={this.state.successfulCompilation}
           />
 
-          <h3>Markup options</h3>
-          <Options
+          <MarkupOptions
             type="markup"
             togglePath={this.togglePath}
+            path={this.state.path}
             toggleMinified={this.toggleMinified}
+            minified={this.state.minified}
           />
 
-          <Markup packageInfo={this.state.versionData} markupOptions={this.state.markupOptions} />
+          {this.state && this.state.versionData ? (
+            <Markup
+              packageInfo={this.state.versionData}
+              path={this.state.path}
+              minified={this.state.minified}
+            />
+          ) : (
+            <div className="loader">
+              <img src={loader} alt="loader" />
+            </div>
+          )}
         </main>
       </div>
     );

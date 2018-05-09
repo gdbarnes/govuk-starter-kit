@@ -26,7 +26,7 @@ exports.zip = (req, res) => {
   const output = fs.createWriteStream(path.join(downloadFilePath, fileName));
 
   output.on('close', function() {
-    console.log('...zip created ✅ (' + bytesToSize(archive.pointer()) + ')\n');
+    console.log('...zip created ✅  (' + bytesToSize(archive.pointer()) + ')\n');
   });
 
   output.on('end', function() {
