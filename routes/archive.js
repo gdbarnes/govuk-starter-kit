@@ -17,7 +17,7 @@ const downloadFilePath = path.join(__dirname, '..', 'build', 'downloads');
 const fileName = 'assets.zip';
 
 exports.zip = (req, res) => {
-  console.log('\nCreating zip... 🗜\n');
+  console.log('\n◆ Creating archive 🗜\n');
 
   if (!fs.existsSync(downloadFilePath)) {
     fs.mkdirSync(downloadFilePath);
@@ -26,7 +26,7 @@ exports.zip = (req, res) => {
   const output = fs.createWriteStream(path.join(downloadFilePath, fileName));
 
   output.on('close', function() {
-    console.log('...zip created ✅  (' + bytesToSize(archive.pointer()) + ')\n');
+    console.log('◆ assets.zip created ✅  (' + bytesToSize(archive.pointer()) + ')\n');
   });
 
   output.on('end', function() {
@@ -54,7 +54,7 @@ exports.zip = (req, res) => {
   archive.directory(directory, false);
   archive.finalize();
 
-  res.send('<h1>Archive created.</h1>');
+  res.send('Archive created');
 };
 
 exports.download = (req, res) => {

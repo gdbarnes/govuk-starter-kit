@@ -8,8 +8,8 @@ const Intro = () => (
       linked to from a CDN.
     </p>
     <p>
-      It uses the npm packages listed below locally and compares their version numbers with the
-      relevant GitHub repositories.
+      Files are generated using the local npm packages listed below. These versions are compared
+      with the equivalent GitHub repositories to ensure everything is up-to-date.
     </p>
   </div>
 );

@@ -1,7 +1,7 @@
 const exec = require('child_process').exec;
 
 exports.gulp = (req, res) => {
-  console.log('\nGulp tasks started... 🥤\n');
+  console.log('\n◆ Gulp tasks started 🥤\n');
   exec('gulp', (error, stdout, stderr) => {
     if (error) {
       console.error(`exec error: ${error} ❌`);
@@ -14,7 +14,7 @@ exports.gulp = (req, res) => {
     }
 
     console.log(stdout);
-    console.log('...Gulp tasks complete ✅');
+    console.log('◆ Gulp tasks complete ✅');
   });
   res.send('<h1>Styles built.</h1>');
 };

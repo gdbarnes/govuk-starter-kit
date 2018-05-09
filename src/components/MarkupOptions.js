@@ -5,18 +5,22 @@ const MarkupOptions = props => {
   const { togglePath, path, toggleMinified, minified } = props;
   return (
     <div>
-      <h3>Asset options</h3>
+      <h3>Markup options</h3>
       <div className="options markup-options">
         <button onClick={togglePath}>Toggle path (cdn or absolute)</button>
+
         <button onClick={toggleMinified}>Toggle minified CSS</button>
       </div>
       <p>
-        Current path{' '}
+        Example path:{' '}
         {path === 'absolute'
-          ? '(absolute): /assets/...'
-          : `(cdn): ${markupOptions.cdnUrl}/assets/...`}
+          ? `(absolute): /assets/stylesheets/govuk-template${
+              minified ? markupOptions.minifiedSuffix : ''
+            }.css`
+          : `(cdn): ${markupOptions.cdnUrl}/assets/stylesheets/govuk-template${
+              minified ? markupOptions.minifiedSuffix : ''
+            }.css`}
       </p>
-      <p>Minified css: {minified ? 'Yes' : 'No'}</p>
     </div>
   );
 };

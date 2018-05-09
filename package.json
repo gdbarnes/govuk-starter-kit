@@ -4,23 +4,23 @@
   "private": true,
   "devDependencies": {
     "concurrently": "^3.5.1",
-    "react-scripts": "1.1.1"
+    "react-scripts": "1.1.4"
   },
   "dependencies": {
     "archiver": "^2.1.1",
-    "express": "^4.16.2",
+    "express": "^4.16.3",
     "govuk-elements-sass": "^3.1.2",
-    "govuk_frontend_toolkit": "^7.4.1",
-    "govuk_template_jinja": "^0.23.0",
+    "govuk_template_jinja": "^0.24.0",
+    "govuk_frontend_toolkit": "^7.5.0",
     "gulp": "^3.9.1",
     "gulp-clean": "^0.4.0",
-    "gulp-clean-css": "^3.9.2",
+    "gulp-clean-css": "^3.9.4",
     "gulp-rename": "^1.2.2",
-    "gulp-sass": "^3.1.0",
+    "gulp-sass": "^4.0.1",
     "gulp-size": "^3.0.0",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "react-syntax-highlighter": "^7.0.0",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "react-syntax-highlighter": "^7.0.4",
     "serve-index": "^1.9.1"
   },
   "scripts": {

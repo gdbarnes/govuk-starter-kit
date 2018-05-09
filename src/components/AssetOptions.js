@@ -11,7 +11,7 @@ const AssetOptions = props => {
   } = props;
   return (
     <div>
-      <h3>Markup options</h3>
+      <h3>Asset options (view terminal for detailed progress)</h3>
       <div className="options asset-options">
         <button onClick={generateFiles}>Generate files</button>
         <button onClick={browseAssets} disabled={!successfulCompilation}>

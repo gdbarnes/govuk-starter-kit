@@ -25,7 +25,6 @@ class App extends Component {
     Promise.resolve(this.props.data)
       .catch(error => console.error('Error: ', error))
       .then(value => {
-        // console.log(value);
         this.setState({
           loading: false,
           versionData: value
@@ -52,7 +51,7 @@ class App extends Component {
   }
 
   generateFiles = () => {
-    console.log('%c%s', consoleStyles, `Gulp tasks started... 🥤`);
+    console.log('%c%s', consoleStyles, `◆ Gulp tasks started 🥤`);
     fetch('/gulp')
       .catch(error => console.error('Error: ', error))
       .then(response => this.successfulCompile());
@@ -69,7 +68,7 @@ class App extends Component {
   };
 
   createArchive = () => {
-    console.log('%c%s', consoleStyles, `Creating zip... 🗜`);
+    console.log('%c%s', consoleStyles, `◆ Creating archive 🗜`);
     fetch('/archive')
       .then(response => {
         this.setState({ archiveCreated: true });
@@ -77,7 +76,7 @@ class App extends Component {
         console.log(
           '%c%s',
           consoleStyles,
-          `...zip created ✅ \n\nDownload from: ${this.state.serverLocation}/download`
+          `◆ assets.zip created ✅ \n\nDownload from: ${this.state.serverLocation}/download`
         );
       })
       .catch(err => console.log(err));
