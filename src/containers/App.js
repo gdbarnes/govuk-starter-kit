@@ -63,7 +63,7 @@ class App extends Component {
     console.log(
       '%c%s',
       consoleStyles,
-      `...Gulp tasks complete ✅ \n\nAssets compiled to: ${this.state.serverLocation}/assets`
+      `◆ Gulp tasks complete ✅ \n\nAssets compiled to: ${this.state.serverLocation}/assets`
     );
   };
 
