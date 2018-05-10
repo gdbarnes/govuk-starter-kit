@@ -2,7 +2,7 @@ import React from 'react';
 
 const AssetOptions = props => {
   const {
-    generateFiles,
+    generateAssets,
     browseAssets,
     successfulCompilation,
     createArchive,
@@ -13,7 +13,7 @@ const AssetOptions = props => {
     <div>
       <h3>Asset options (view terminal for detailed progress)</h3>
       <div className="options asset-options">
-        <button onClick={generateFiles}>Generate files</button>
+        <button onClick={generateAssets}>Generate assets</button>
         <button onClick={browseAssets} disabled={!successfulCompilation}>
           Browse assets
         </button>

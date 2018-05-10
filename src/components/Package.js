@@ -6,6 +6,7 @@ const Package = props => {
     <li className={isCurrent ? 'package' : 'package package-outdated'}>
       <header className="package-header">
         <h2>{props.packageTitle}</h2>
+        <h3>{props.npmPackageName}</h3>
         <p className="package-status">
           {isCurrent ? 'Up to date - ✅' : 'Package is out of date -❗️'}
         </p>
@@ -16,11 +17,9 @@ const Package = props => {
           Local version:{' '}
           <span className={isCurrent ? '' : 'local-outdated'}>{props.versions.localVersion}</span>
         </p>
-        {isCurrent ? (
-          ''
-        ) : (
+        {!isCurrent ? (
           <button onClick={props.howToUpdate}>How do I update this package?</button>
-        )}
+        ) : null}
       </main>
     </li>
   );

@@ -50,7 +50,7 @@ class App extends Component {
     });
   }
 
-  generateFiles = () => {
+  generateAssets = () => {
     console.log('%c%s', consoleStyles, `◆ Gulp tasks started 🥤`);
     fetch('/gulp')
       .catch(error => console.error('Error: ', error))
@@ -134,7 +134,7 @@ class App extends Component {
 
           <AssetOptions
             type="assets"
-            generateFiles={this.generateFiles}
+            generateAssets={this.generateAssets}
             browseAssets={this.browseAssets}
             createArchive={this.createArchive}
             downloadArchive={this.downloadArchive}
