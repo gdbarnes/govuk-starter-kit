@@ -2,11 +2,13 @@
 
 Generates the necessary HTML, CSS, JavaScript and imagery to be used when starting ESFA web projects
 
+### Clone the repository
+
 ```sh
-Clone repo: https://github.com/gdbarnes/govuk-starter-kit.git
+https://github.com/gdbarnes/govuk-starter-kit.git
 ```
 
-In your terminal
+### In your terminal
 
 ```sh
 yarn
