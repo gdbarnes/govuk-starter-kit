@@ -42,12 +42,16 @@ class App extends Component {
         })
       );
 
-    const assetsHaveCompiled = localStorage.getItem('successfulCompilation');
-    const archiveWasCreated = localStorage.getItem('archiveCreated');
+    const assetsHaveCompiled = sessionStorage.getItem('successfulCompilation');
+    const archiveWasCreated = sessionStorage.getItem('archiveCreated');
     this.setState({
       successfulCompilation: assetsHaveCompiled,
       archiveCreated: archiveWasCreated
     });
+  }
+
+  componentWillUnmount() {
+    sessionStorage.clear();
   }
 
   generateAssets = () => {
@@ -59,12 +63,9 @@ class App extends Component {
 
   successfulCompile = () => {
     this.setState({ successfulCompilation: true });
-    localStorage.setItem('successfulCompilation', this.state.successfulCompilation);
-    console.log(
-      '%c%s',
-      consoleStyles,
-      `◆ Gulp tasks complete ✅ \n\nAssets compiled to: ${this.state.serverLocation}/assets`
-    );
+    sessionStorage.setItem('successfulCompilation', this.state.successfulCompilation);
+    console.log('%c%s', consoleStyles, `◆ Gulp tasks complete ✅`);
+    console.log('%c%s', consoleStyles, `◆ Assets compiled to: ${this.state.serverLocation}/assets`);
   };
 
   createArchive = () => {
@@ -72,11 +73,12 @@ class App extends Component {
     fetch('/archive')
       .then(response => {
         this.setState({ archiveCreated: true });
-        localStorage.setItem('archiveCreated', this.state.archiveCreated);
+        sessionStorage.setItem('archiveCreated', this.state.archiveCreated);
+        console.log('%c%s', consoleStyles, `◆ assets.zip created ✅`);
         console.log(
           '%c%s',
           consoleStyles,
-          `◆ assets.zip created ✅ \n\nDownload from: ${this.state.serverLocation}/download`
+          `◆ Download from: ${this.state.serverLocation}/download`
         );
       })
       .catch(err => console.log(err));
@@ -106,7 +108,7 @@ class App extends Component {
   // };
 
   browseAssets = () => {
-    window.location = `${this.state.serverLocation}/assets`;
+    window.open(`${this.state.serverLocation}/assets`);
   };
 
   howToUpdate = () => {

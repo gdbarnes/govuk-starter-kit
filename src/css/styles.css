@@ -82,7 +82,53 @@ h4 {
 .options button,
 .package {
   margin: 0 1rem;
+}
+
+.package {
   border: 1px solid var(--darkGrey);
+}
+
+button {
+  padding: 1rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  color: var(--grey);
+  background: var(--darkGrey);
+  border: 1px solid var(--darkGrey);
+}
+
+.asset-options button:first-child::after {
+  display: none;
+}
+
+.asset-options button::after {
+  top: -7px;
+  left: -31px;
+  content: '';
+  display: block;
+  position: relative;
+  height: 2px;
+  width: 20px;
+  background-color: var(--darkGrey);
+}
+
+.asset-options button:disabled::after {
+  background-color: var(--grey);
+}
+
+button:hover,
+button:active {
+  color: var(--darkGrey);
+  background: var(--grey);
+  border: 1px solid var(--darkGrey);
+}
+
+button:disabled {
+  background: var(--grey);
+  color: #b9bcc0;
+  border: 1px solid var(--grey);
+  pointer-events: none;
 }
 
 .packages {
@@ -167,28 +213,4 @@ h4 {
 .local-outdated {
   color: var(--errorRed);
   font-weight: 700;
-}
-
-button {
-  padding: 1rem;
-  font-size: 1.2rem;
-  font-weight: 700;
-  cursor: pointer;
-  color: var(--grey);
-  background: var(--darkGrey);
-  border: 1px solid var(--darkGrey);
-}
-
-button:hover,
-button:active {
-  color: var(--darkGrey);
-  background: var(--grey);
-  border: 1px solid var(--darkGrey);
-}
-
-button:disabled {
-  background: var(--grey);
-  color: #b9bcc0;
-  border: 1px solid var(--grey);
-  pointer-events: none;
 }

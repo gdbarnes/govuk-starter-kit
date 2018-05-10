@@ -3,13 +3,12 @@ import React from 'react';
 const Intro = () => (
   <div>
     <p>
-      This app will generate the necessary assets and provide consistent markup to be used in ESFA
-      projects. These can then be downloaded and used locally in a project or (when available)
-      linked to from a CDN.
+      This app generates the necessary assets and provides markup to be used in ESFA projects. These
+      can be used to start a new project or update an existing one.
     </p>
     <p>
-      Files are generated using the local npm packages listed below. These versions are compared
-      with the equivalent GitHub repositories to ensure everything is up-to-date.
+      Local npm packages are compared with their equivalent GitHub repositories to ensure everything
+      is up to date. If a package is out of date instructions are shown on how to update.
     </p>
   </div>
 );

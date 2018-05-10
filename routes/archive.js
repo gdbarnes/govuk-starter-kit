@@ -27,6 +27,7 @@ exports.zip = (req, res) => {
 
   output.on('close', function() {
     console.log('◆ assets.zip created ✅  (' + bytesToSize(archive.pointer()) + ')\n');
+    console.log('◆ Saved to location: ' + downloadFilePath + ' ⬇️\n');
   });
 
   output.on('end', function() {

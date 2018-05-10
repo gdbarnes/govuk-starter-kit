@@ -14,7 +14,7 @@ exports.gulp = (req, res) => {
     }
 
     console.log(stdout);
-    console.log('◆ Gulp tasks complete ✅');
+    console.log('◆ Gulp tasks complete ✅\n');
   });
-  res.send('<h1>Styles built.</h1>');
+  res.send('Styles built');
 };
